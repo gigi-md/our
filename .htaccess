@@ -1,0 +1,17 @@
+AddDefaultCharset utf-8
+
+RewriteEngine on
+
+php_value register_globals 0
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} (.*)
+RewriteCond %{REQUEST_URI} /$ [NC]
+RewriteRule ^(.*)(/our_engine_final/)$ $1 [L,R=301]
+
+
+
+Options +FollowSymlinks
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*) /our_engine_final/?%{QUERY_STRING}
